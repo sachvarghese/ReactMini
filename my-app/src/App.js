@@ -26,6 +26,18 @@ class App extends Component {
         completed: false
 
       }
+    ],
+
+    users: [
+      {
+        id: 'A-8811',
+        password: 'igloo123'
+      },
+      {
+        id: 'A-9988',
+        password: 'impala11'
+      }
+
     ]
   }
 
@@ -62,11 +74,11 @@ class App extends Component {
       */
      <Router>
        <Route exact path="/" render={props=>(<React.Fragment>
-        <LoginPage />
+        <LoginPage users={this.state.users}/>
        </React.Fragment> )}/>
 
-        <Route path="/:id/:Pass" render={props=>(<React.Fragment>
-        <ArticleView />
+        <Route path="/ArticleView/:id" render={props=>(<React.Fragment>
+        <ArticleView {...props}/>
        </React.Fragment> )}/>
       </Router>
     );

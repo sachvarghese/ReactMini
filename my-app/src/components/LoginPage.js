@@ -15,10 +15,22 @@ class LoginPage extends Component {
         );
     }
 
+    validateCredentials = () => {
+        for(var i=0;i<this.props.users.length;i++){
+            if(this.props.users[i].id===this.state.id && this.props.users[i].password===this.state.pass){
+                return true;
+            }
+        }
+        return false;
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
-        console.log('/'+this.state.id+"/"+this.state.pass);
-        this.props.history.push('/'+this.state.id+"/"+this.state.pass);
+        if(this.validateCredentials()) {
+        this.props.history.push('/ArticleView/'+ this.state.id);
+        }
+
+        
     }
 
     render() {
