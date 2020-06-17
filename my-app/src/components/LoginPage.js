@@ -5,7 +5,8 @@ class LoginPage extends Component {
 
     state={
         id:'',
-        pass:''
+        pass:'',
+        showError:false
     }
 
     onChange = (e) => {
@@ -27,7 +28,16 @@ class LoginPage extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         if(this.validateCredentials()) {
-        this.props.history.push('/ArticleView/'+ this.state.id);
+            this.state.showError = false;
+            this.props.history.push('/ArticleView/'+ this.state.id);
+        }
+        else {
+            this.setState({
+                id:this.state.id,
+                pass:this.state.pass,
+                showError:true
+            });
+            console.log(this.state.showError);
         }
 
         
@@ -35,14 +45,16 @@ class LoginPage extends Component {
 
     render() {
         return (
+            <div style={{width:window.innerWidth,height:window.innerHeight,backgroundColor:'lightblue'}}>
             <form style={{marginLeft: (window.innerWidth/2)-centerBoxId.width/2}}>
              <input type="text" name="id" style={centerBoxId} placeholder="ID" value={this.state.id} onChange={this.onChange}/>
              <br/>
              <input type="password" name="pass" style={centerBoxPass} placeholder="Password" onChange={this.onChange}/>
              <br/>
              <button type="Submit" style={submitStyle} onClick={this.onSubmit}>Submit</button>
-
+            <h3 style={this.state.showError? showErrorMessage:errorMessage}>Incorrect credentials</h3>
             </form>
+            </div>
         );
     }
 }
@@ -78,5 +90,17 @@ const submitStyle = {
     radius:5,
     marginLeft: centerBoxPass.width/2.5,
     marginTop: centerBoxPass.height
+}
+
+var errorMessage = {
+    color:'red',
+     marginLeft:window.innerWidth/10.5, 
+     visibility:'hidden'
+}
+
+var showErrorMessage = {
+    color:'red',
+     marginLeft:window.innerWidth/10.5, 
+     visibility:'visible'
 }
 export default withRouter(LoginPage);

@@ -74,7 +74,7 @@ class App extends Component {
       */
      <Router>
        <Route exact path="/" render={props=>(<React.Fragment>
-        <LoginPage users={this.state.users}/>
+        <LoginPage users={this.state.users} />
        </React.Fragment> )}/>
 
         <Route path="/ArticleView/:id" render={props=>(<React.Fragment>
