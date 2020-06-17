@@ -29,7 +29,7 @@ class LoginPage extends Component {
         e.preventDefault();
         if(this.validateCredentials()) {
             this.state.showError = false;
-            this.props.history.push('/ArticleView/'+ this.state.id);
+            this.props.history.push('/articleview/'+ this.state.id);
         }
         else {
             this.setState({
@@ -45,7 +45,7 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div style={{width:window.innerWidth,height:window.innerHeight,backgroundColor:'lightblue'}}>
+            <div>
             <form style={{marginLeft: (window.innerWidth/2)-centerBoxId.width/2}}>
              <input type="text" name="id" style={centerBoxId} placeholder="ID" value={this.state.id} onChange={this.onChange}/>
              <br/>

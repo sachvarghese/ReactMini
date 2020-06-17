@@ -4,27 +4,26 @@ import Article from './components/Article';
 import './App.css';
 import { render } from '@testing-library/react';
 import LoginPage from './components/LoginPage';
-import ArticleView from './components/ArticleView';
+import HomePage from './components/HomePage';
+import SearchPage from './components/SearchPage';
+import AddPage from './components/AddPage';
+
 
 class App extends Component {
 
   state = {
-    arts: [
+    articles: [
       {
-        id: 1,
         title:'The boy who cried wolf',
-        completed: true
+        content: 'This is the story of the boy who cried wolf. ierghero wefpwi'
       },
       {
-        id: 2,
         title:'Five men',
-        completed: false
+        content: 'Five men were walking down the street one day. the end.'
       },
       {
-        id: 3,
         title:'23 and me',
-        completed: false
-
+        content: 'Human chromosomes are extremely complex and the scope is insufficient here.'
       }
     ],
 
@@ -77,10 +76,20 @@ class App extends Component {
         <LoginPage users={this.state.users} />
        </React.Fragment> )}/>
 
-        <Route path="/ArticleView/:id" render={props=>(<React.Fragment>
-        <ArticleView {...props}/>
+        <Route path="/articleview/:id" render={props=>(<React.Fragment>
+        <HomePage {...props}/>
        </React.Fragment> )}/>
-      </Router>
+
+       <Route path="/searchview/:id" render={props=>(<React.Fragment>
+        <SearchPage {...props} articles={this.state.articles}/>
+       </React.Fragment> )}/>
+
+        <Route path="/addview/:id" render={props=>(<React.Fragment>
+        <AddPage {...props}/>
+        </React.Fragment> )}/>
+
+        </Router>
+
     );
   }
 }
