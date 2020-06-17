@@ -7,23 +7,31 @@ import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 import AddPage from './components/AddPage';
-
+import {v4 as uuid} from 'uuid';
 
 class App extends Component {
 
   state = {
     articles: [
       {
+        id: uuid(),
         title:'The boy who cried wolf',
         content: 'This is the story of the boy who cried wolf. ierghero wefpwi'
       },
       {
+        id: uuid(),
         title:'Five men',
         content: 'Five men were walking down the street one day. the end.'
       },
       {
+        id: uuid(),
         title:'23 and me',
         content: 'Human chromosomes are extremely complex and the scope is insufficient here.'
+      },
+      {
+        id: uuid(),
+        title:'The boy and his mother',
+        content: 'Not an article, just testing sample substring articles.'
       }
     ],
 

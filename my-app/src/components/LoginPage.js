@@ -84,7 +84,7 @@ const submitStyle = {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 18,
-    backgroundColor: 'green',
+    backgroundColor: 'lightgreen',
     width: 100,
     height:30,
     radius:5,
