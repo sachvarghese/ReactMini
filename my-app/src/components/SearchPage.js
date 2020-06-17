@@ -22,6 +22,10 @@ class SearchPage extends Component {
     }
 
     doArticlesExist = () => {
+        console.log(this.state.substring.length);
+        if(this.state.substring.length<2) {
+            return false;
+        }
         for(var i=0; i<this.props.articles.length; i++) {
             if(this.props.articles[i].title.includes(this.state.substring)) {
                 return true;
@@ -65,17 +69,6 @@ class SearchPage extends Component {
             </div>
             </React.Fragment>
             )
-
-        return (
-            <div>
-                <button style={buttonStyle} onClick={this.homeClick}> Home</button>
-                <br/><br/><br/><br/>
-                <label style={searchTextStyle}>Search:</label>
-                <input type="text" style={searchStyle}/>
-                <button style={searchButtonStyle}> Search</button>
-                <br/><br/><br/>
-            </div>        
-        )
         
     }
 }

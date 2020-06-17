@@ -69,6 +69,20 @@ class App extends Component {
     console.log(this.state.arts)
   }
 
+  addArticle = (title,content) => {
+    const newArticle = {
+      id: uuid(),
+      title,
+      content
+    }
+    this.setState(
+      {
+        articles:[...this.state.articles, newArticle],
+        users: [...this.state.users]
+      }
+    )
+  }
+
   render() {
     return (
       /*
@@ -93,7 +107,7 @@ class App extends Component {
        </React.Fragment> )}/>
 
         <Route path="/addview/:id" render={props=>(<React.Fragment>
-        <AddPage {...props}/>
+        <AddPage {...props} addArticle={this.addArticle}/>
         </React.Fragment> )}/>
 
         </Router>

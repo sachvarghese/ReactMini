@@ -13,7 +13,7 @@ class HomePage extends Component {
 
     clickAdd = () => {
         console.log("Right");
-        this.props.history.push('/addview/');
+        this.props.history.push('/addview/'  + this.props.match.params.id);
 
     }
 
