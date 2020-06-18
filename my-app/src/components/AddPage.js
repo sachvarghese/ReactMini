@@ -24,7 +24,7 @@ class AddPage extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        if(this.state.title!='' && this.state.content!='') {
+        if(this.state.title!=='' && this.state.content!=='') {
             this.setState({
                 title:'',
                 content:'',

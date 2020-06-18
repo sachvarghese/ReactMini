@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 import AddPage from './components/AddPage';
 import {v4 as uuid} from 'uuid';
+import ViewPage from './components/ViewPage';
 
 class App extends Component {
 
@@ -109,7 +110,10 @@ class App extends Component {
         <Route path="/addview/:id" render={props=>(<React.Fragment>
         <AddPage {...props} addArticle={this.addArticle}/>
         </React.Fragment> )}/>
-
+          
+        <Route path="/viewarticle/:id/:articleid" render={props=>(<React.Fragment>
+        <ViewPage {...props} articles={this.state.articles}/>
+        </React.Fragment> )}/>
         </Router>
 
     );

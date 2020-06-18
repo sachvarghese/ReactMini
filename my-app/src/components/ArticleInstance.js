@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'; 
 
 class ArticleItem extends Component {
 
-
-
-    
+    onViewClick = (id) => {
+        console.log(this.props);
+        this.props.history.push('/viewarticle/'+ this.props.match.params.id+ '/' + id);
+    }
 
     render() {
         return this.props.arts.filter(art => art.title.includes(this.props.substring)).map((art) => (
             <div style={artStyle}>
                 {art.title}
-                <button style={buttonStyle}>View</button>
+                <button style={buttonStyle} onClick={this.onViewClick.bind(this,art.id)}>View</button>
                 <br/>
                 </div>
         ));
@@ -40,4 +42,4 @@ const buttonStyle = {
     backgroundColor: 'lightgreen',
     float:'right'
 }
-export default ArticleItem;
+export default withRouter(ArticleItem);

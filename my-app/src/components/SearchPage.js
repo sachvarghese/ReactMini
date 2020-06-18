@@ -5,13 +5,15 @@ class SearchPage extends Component {
 
     state = {
         substring: '',
-        artVisibility: 'hidden'
+        artVisibility: 'hidden',
+        noResVisible: 'hidden'
     }
 
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
-            artVisibility: 'hidden'
+            artVisibility: 'hidden',
+            noResVisible: 'hidden'
         }
         );
     }
@@ -39,14 +41,16 @@ class SearchPage extends Component {
         if(this.doArticlesExist()){
             this.setState({
                 substring: this.state.substring,
-                artVisibility: 'visible'
+                artVisibility: 'visible',
+                noResVisible:'hidden'
         });
         }
         else {
             console.log("No");
             this.setState({
                 substring: this.state.substring,
-                artVisibility: 'hidden'
+                artVisibility: 'hidden',
+                noResVisible:'visible'
         });
         }
     }
@@ -63,10 +67,13 @@ class SearchPage extends Component {
             <button style={searchButtonStyle} onClick={this.searchArticles}> Search</button>
             <br/><br/><br/>
             </div>
-            
-            <div style={{visibility:this.state.artVisibility}}>
-            <ArticleInstance arts={this.props.articles} substring={this.state.substring}/>
+            <div style={{visibility:this.state.noResVisible}}>
+            <h2 style={errorStyle}>No result found</h2>
             </div>
+            <div style={{visibility:this.state.artVisibility}}>
+            <ArticleInstance arts={this.props.articles} substring={this.state.substring} />
+            </div>
+            
             </React.Fragment>
             )
         
@@ -116,4 +123,8 @@ const searchTextStyle = {
     marginLeft: 20
  }
 
+ var errorStyle = {
+    color:'red',
+     marginLeft:window.innerWidth/2, 
+}
 export default withRouter(SearchPage);
