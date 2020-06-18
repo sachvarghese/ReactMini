@@ -48,15 +48,15 @@ class AddPage extends Component {
     render() {
         return (
             <div>
-            <button style={homeStyle} onClick={this.homeClick}> Home</button>
+            <button class="btn btn-success" style={homeStyle} onClick={this.homeClick}> Home</button>
             
             <form style={{marginLeft: (window.innerWidth/2)-centerBoxText.width/2}}>
              <input type="text" name="title" style={centerBoxText} placeholder="Title" value={this.state.title} onChange={this.onChange}/>
              <br/>
              <textarea type="text" name="content" style={centerBoxContent} placeholder="Content" value={this.state.content} onChange={this.onChange}/>
              <br/>
-             <button type="Submit" style={submitStyle} onClick={this.onSubmit}>Publish</button>
-             <h3 style={this.state.showError? showErrorMessage:this.state.showSuccess? showSuccessMessage:successMessage}>{this.state.message}</h3>
+             <button class="btn btn-primary" type="Submit" style={submitStyle} onClick={this.onSubmit}>Publish</button>
+             <p class={this.state.showError? "alert alert-danger":this.state.showSuccess? "alert alert-success":"alert alert-danger"}style={this.state.showError? showErrorMessage:this.state.showSuccess? showSuccessMessage:successMessage}>{this.state.message}</p>
             </form>
             </div>
         );
@@ -84,18 +84,12 @@ const centerBoxContent = {
 
 const submitStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'lightgreen',
-    width: 100,
-    height:30,
-    radius:5,
     marginLeft: centerBoxContent.width/2.7,
     marginTop: 30,
 }
 
 var errorMessage = {
+    width:window.innerWidth/5,
     color:'red',
      marginLeft:window.innerWidth/18, 
      visibility:'hidden',
@@ -103,6 +97,7 @@ var errorMessage = {
 }
 
 var showErrorMessage = {
+    width:window.innerWidth/5,
     color:'red',
      marginLeft:window.innerWidth/18, 
      visibility:'visible',
@@ -110,6 +105,7 @@ var showErrorMessage = {
 }
 
 var successMessage = {
+    width:window.innerWidth/5,
     color:'green',
      marginLeft:window.innerWidth/18, 
      visibility:'hidden',
@@ -118,6 +114,7 @@ var successMessage = {
 }
 
 var showSuccessMessage = {
+    width:window.innerWidth/5,
     color:'green',
      marginLeft:window.innerWidth/18, 
      visibility:'visible',
@@ -126,13 +123,6 @@ var showSuccessMessage = {
 
 const homeStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'green',
-    width: 100,
-    height:30,
-    radius:10,
     float: 'right',
     marginRight:50
 }

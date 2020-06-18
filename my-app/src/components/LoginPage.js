@@ -51,8 +51,11 @@ class LoginPage extends Component {
              <br/>
              <input type="password" name="pass" style={centerBoxPass} placeholder="Password" onChange={this.onChange}/>
              <br/>
-             <button type="Submit" style={submitStyle} onClick={this.onSubmit}>Submit</button>
-            <h3 style={this.state.showError? showErrorMessage:errorMessage}>Incorrect credentials</h3>
+             <button class="btn btn-primary" type="Submit" style={submitStyle} onClick={this.onSubmit}>Login</button>
+             
+             <div class="alert alert-danger" style={this.state.showError? showErrorMessage:errorMessage}>
+            <p>Incorrect credentials</p>
+            </div>
             </form>
             </div>
         );
@@ -81,14 +84,7 @@ const centerBoxPass = {
 
 const submitStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'lightgreen',
-    width: 100,
-    height:30,
-    radius:5,
-    marginLeft: centerBoxPass.width/2.5,
+    marginLeft: centerBoxPass.width/2.4,
     marginTop: centerBoxPass.height
 }
 
@@ -100,7 +96,11 @@ var errorMessage = {
 
 var showErrorMessage = {
     color:'red',
-     marginLeft:window.innerWidth/10.5, 
-     visibility:'visible'
+    textAlign:'center',
+    width:200,
+    height:50,
+    marginTop: window.innerHeight/10,
+    marginLeft: window.innerWidth/15,
+    visibility:'visible'
 }
 export default withRouter(LoginPage);

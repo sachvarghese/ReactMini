@@ -47,16 +47,16 @@ class ViewPage extends Component {
     render() {
         return (
             <div>
-            <button style={homeStyle} onClick={this.homeClick}> Home</button>
+            <button class="btn btn-success" style={homeStyle} onClick={this.homeClick}> Home</button>
             
             <div style={{marginLeft: (window.innerWidth/2)-centerBoxText.width/2}}>
              <input type="text" name="title" style={centerBoxText} value={this.state.title} readOnly />
              <br/>
              <textarea type="text" name="content" style={centerBoxContent} value={this.state.content} readOnly />
              <br/>
-             <button style={backBtnStyle} onClick={this.backClick}>Back</button>
-             <button style={editBtnStyle} onClick={this.editClick}>Edit</button>
-             <button style={deleteBtnStyle} onClick={this.deleteClick}>Delete</button>
+             <button class="btn btn-success" style={backBtnStyle} onClick={this.backClick}>Back</button>
+             <button class="btn btn-warning" style={editBtnStyle} onClick={this.editClick}>Edit</button>
+             <button class="btn btn-danger" style={deleteBtnStyle} onClick={this.deleteClick}>Delete</button>
             </div>
             </div>
         );
@@ -84,20 +84,12 @@ const centerBoxContent = {
 
 const homeStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'green',
-    width: 100,
-    height:30,
-    radius:10,
     float: 'right',
     marginRight:50
 }
 
 const backBtnStyle = {
     width: 50,
-    backgroundColor:'lightgreen',
     padding: '5px',
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,
@@ -106,7 +98,6 @@ const backBtnStyle = {
 
 const editBtnStyle = {
     width: 50,
-    backgroundColor:'yellow',
     padding: '5px',
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,
@@ -114,8 +105,7 @@ const editBtnStyle = {
 }
 
 const deleteBtnStyle = {
-    width: 50,
-    backgroundColor:'red',
+    width: 55,
     padding: '5px',
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,

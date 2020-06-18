@@ -47,15 +47,15 @@ class EditPage extends Component {
     render() {
         return (
             <div>
-            <button style={homeStyle} onClick={this.homeClick}> Home</button>
+            <button class="btn btn-success" style={homeStyle} onClick={this.homeClick}> Home</button>
             
             <div style={{marginLeft: (window.innerWidth/2)-centerBoxText.width/2}}>
              <input type="text" name="title" style={centerBoxText} value={this.state.title} onChange={this.onChange}/>
              <br/>
              <textarea type="text" name="content" style={centerBoxContent} value={this.state.content} onChange={this.onChange}/>
              <br/>
-             <button style={backBtnStyle} onClick={this.backClick}>Back</button>
-             <button style={publishBtnStyle} onClick={this.publishClick}>Publish</button>
+             <button class="btn btn-success" style={backBtnStyle} onClick={this.backClick}>Back</button>
+             <button class="btn btn-primary" style={publishBtnStyle} onClick={this.publishClick}>Publish</button>
             </div>
             </div>
         );
@@ -83,20 +83,12 @@ const centerBoxContent = {
 
 const homeStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'green',
-    width: 100,
-    height:30,
-    radius:10,
     float: 'right',
     marginRight:50
 }
 
 const publishBtnStyle = {
     width: 70,
-    backgroundColor:'lightgreen',
     padding: '5px',
     marginLeft:window.innerWidth/8,
     marginTop: window.innerHeight/20,
@@ -105,7 +97,6 @@ const publishBtnStyle = {
 
 const backBtnStyle = {
     width: 50,
-    backgroundColor:'lightgreen',
     padding: '5px',
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,

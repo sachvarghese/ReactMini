@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'; 
-import ArticleInstance from './ArticleInstance'
+import ArticleInstance from './ArticleInstance';
+
 class SearchPage extends Component {
 
     state = {
@@ -60,11 +61,11 @@ class SearchPage extends Component {
             <React.Fragment>
 
             <div>
-            <button style={buttonStyle} onClick={this.homeClick}> Home</button>
+            <button class="btn btn-success" style={buttonStyle} onClick={this.homeClick}> Home</button>
             <br/><br/><br/><br/>
             <label style={searchTextStyle}>Search:</label>
             <input type="text" name="substring" style={searchStyle} value={this.state.substring} onChange={this.onChange}/>
-            <button style={searchButtonStyle} onClick={this.searchArticles}> Search</button>
+            <button class="btn btn-success" style={searchButtonStyle} onClick={this.searchArticles}> Search</button>
             <br/><br/><br/>
             </div>
             <div style={{visibility:this.state.noResVisible}}>
@@ -82,13 +83,6 @@ class SearchPage extends Component {
 
 const buttonStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'green',
-    width: 100,
-    height:30,
-    radius:10,
     float: 'right',
     marginRight:50
 }
@@ -112,19 +106,11 @@ const searchTextStyle = {
 }
  const searchButtonStyle = {
     cursor: 'pointer',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 18,
-    backgroundColor: 'yellow',
-    width: 100,
-    height:30,
-    radius:10,
-    marginTop: window.innerHeight/10,
     marginLeft: 20
  }
 
  var errorStyle = {
     color:'red',
-     marginLeft:window.innerWidth/2, 
+     marginLeft:window.innerWidth/2.3, 
 }
 export default withRouter(SearchPage);

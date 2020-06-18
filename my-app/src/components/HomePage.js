@@ -25,15 +25,25 @@ class HomePage extends Component {
         this.logProps();
         return (
             <div>
-                <button style={buttonStyle} onClick={this.onLogout}>Logout</button>
+                <button class="btn btn-danger" style={buttonStyle} onClick={this.onLogout}>Logout</button>
                 <h3>Hello {this.props.match.params.id}</h3>
-                <div style={boxLeft} onClick={this.clickSelect}>
-                    <h2 style={{textAlign:'center',marginTop:boxLeft.height/2.2}}>Search for an article</h2>
-                </div>
 
-                <div style={boxRight} onClick={this.clickAdd}>
-                    <h2 style={{textAlign:'center', marginTop:boxLeft.height/2.2}}>Add an article</h2>
-                </div>
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+                <ul class="navbar nav" class="nav justify-content-center">
+
+                    <li class="nav-item" style={{cursor:'pointer'}}>
+                        <h3 class="nav-link active" style={{color:'white'}} onClick={this.clickSelect}>Search for an article</h3>
+                    </li>
+
+                    <li class="nav-item active" style={{cursor:'pointer'}}>
+                        <h3 class="nav-link active" style={{color:'white'}} onClick={this.clickAdd}>Create new article</h3>
+                    </li>
+
+                </ul>
+                </nav>
+
+
+                
             </div>
         );
     }
@@ -43,7 +53,7 @@ const boxLeft = {
     marginLeft:window.innerWidth/4, 
     marginTop:window.innerHeight/4,
     width:window.innerWidth/4,
-    height:window.innerHeight/2,
+    height:window.innerHeight/5,
      border: '1px solid black',
      backgroundColor: 'grey',
      cursor:'pointer'
@@ -51,9 +61,9 @@ const boxLeft = {
 
 const boxRight = {
     marginLeft:window.innerWidth/2, 
-    marginTop:-window.innerHeight/2 - 2,
+    marginTop:-window.innerHeight/5,
     width:window.innerWidth/4,
-    height:window.innerHeight/2,
+    height:window.innerHeight/5,
      border: '1px solid black',
      backgroundColor: 'grey',
      cursor:'pointer'
@@ -61,13 +71,6 @@ const boxRight = {
 
     const buttonStyle = {
         cursor: 'pointer',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: 18,
-        backgroundColor: 'red',
-        width: 100,
-        height:30,
-        radius:5,
         float: 'right',
         marginRight:50
     }
