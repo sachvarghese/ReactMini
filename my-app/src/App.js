@@ -9,6 +9,8 @@ import SearchPage from './components/SearchPage';
 import AddPage from './components/AddPage';
 import {v4 as uuid} from 'uuid';
 import ViewPage from './components/ViewPage';
+import EditPage from './components/EditPage';
+
 
 class App extends Component {
 
@@ -64,7 +66,7 @@ class App extends Component {
     console.log(id)
     this.setState(
       {
-        arts: [...this.state.arts.filter(art => art.id!==id)]
+        articles: [...this.state.articles.filter(article => article.id!==id)]
       }
     );
     console.log(this.state.arts)
@@ -82,6 +84,17 @@ class App extends Component {
         users: [...this.state.users]
       }
     )
+  }
+
+  editArticle = (title, content, id) => {
+    this.setState( {articles: this.state.articles.map(article=> {
+      if(id===article.id) {
+        article.title = title;
+        article.content = content;
+      }
+      return article;
+    }) 
+  });
   }
 
   render() {
@@ -112,9 +125,16 @@ class App extends Component {
         </React.Fragment> )}/>
           
         <Route path="/viewarticle/:id/:articleid" render={props=>(<React.Fragment>
-        <ViewPage {...props} articles={this.state.articles}/>
+        <ViewPage {...props} articles={this.state.articles} delArticle={this.delArticle}/>
         </React.Fragment> )}/>
+        
+        <Route path="/editarticle/:id/:articleid" render={props=>(<React.Fragment>
+        <EditPage {...props} articles={this.state.articles} editArticle={this.editArticle}/>
+        </React.Fragment> )}/>
+        
         </Router>
+
+        
 
     );
   }

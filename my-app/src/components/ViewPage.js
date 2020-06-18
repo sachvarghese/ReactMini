@@ -8,6 +8,18 @@ class ViewPage extends Component {
         content:'<Article does not exist>'
     }
 
+    deleteClick = () => {
+        this.props.delArticle(this.props.match.params.articleid);
+        this.setState({
+            title: '<The article has been deleted>',
+            content: '<The article has been deleted>'
+        });
+    }
+
+    editClick = () => {
+        this.props.history.push('/editArticle/' + this.props.match.params.id + '/' + this.props.match.params.articleid);
+    }
+
     backClick = () => {
         this.props.history.push('/searchview/' + this.props.match.params.id);
     }
@@ -43,8 +55,8 @@ class ViewPage extends Component {
              <textarea type="text" name="content" style={centerBoxContent} value={this.state.content} readOnly />
              <br/>
              <button style={backBtnStyle} onClick={this.backClick}>Back</button>
-             <button style={editBtnStyle}>Edit</button>
-             <button style={deleteBtnStyle}>Delete</button>
+             <button style={editBtnStyle} onClick={this.editClick}>Edit</button>
+             <button style={deleteBtnStyle} onClick={this.deleteClick}>Delete</button>
             </div>
             </div>
         );
@@ -85,7 +97,7 @@ const homeStyle = {
 
 const backBtnStyle = {
     width: 50,
-    backgroundColor:'green',
+    backgroundColor:'lightgreen',
     padding: '5px',
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,
