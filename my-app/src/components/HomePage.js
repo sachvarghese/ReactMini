@@ -42,7 +42,7 @@ class HomePage extends Component {
                 </ul>
                 </nav>
 
-
+                <img src={ require('../images/icon.jpg') } style={{ marginLeft:window.innerWidth/4,marginTop:50,width:window.innerWidth/2,height:window.innerHeight/1.5}}/>
                 
             </div>
         );
