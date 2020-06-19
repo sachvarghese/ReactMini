@@ -5,7 +5,10 @@ class EditPage extends Component {
 
     state = {
         title:'<Article does not exist>',
-        content:'<Article does not exist>'
+        content:'<Article does not exist>',
+        showError:'',
+        showSuccess:'',
+        message: ''
     }
     onChange = (e) => {
         this.setState({
@@ -16,8 +19,26 @@ class EditPage extends Component {
 
     publishClick = () => {
         console.log(this.props);
-        this.props.editArticle(this.state.title, this.state.content, this.props.match.params.articleid);
-        this.backClick();
+        if(this.state.title!=='' && this.state.content!=='') {
+            this.setState({
+                title:'',
+                content:'',
+                showError:false,
+                showSuccess:true,
+                message:'Article added successfully!'
+            });
+            this.props.editArticle(this.state.title, this.state.content, this.props.match.params.articleid);
+            this.backClick();
+        }
+        else {
+            this.setState({
+                title:this.state.title,
+                content:this.state.content,
+                showError:true,
+                showSuccess:false,
+                message:'Please fill both title and content'
+            });
+        }
     }
 
     backClick = () => {
@@ -34,7 +55,8 @@ class EditPage extends Component {
             if(this.props.articles[i].id===this.props.match.params.articleid) {
                 this.setState({
                     title: this.props.articles[i].title,
-                    content: this.props.articles[i].content
+                    content: this.props.articles[i].content,
+                    message:''
                 });
                 console.log(this.props.articles[i].title)
             }
@@ -56,6 +78,7 @@ class EditPage extends Component {
              <br/>
              <button class="btn btn-success" style={backBtnStyle} onClick={this.backClick}>Back</button>
              <button class="btn btn-primary" style={publishBtnStyle} onClick={this.publishClick}>Publish</button>
+             <p class={this.state.showError? "alert alert-danger":this.state.showSuccess? "alert alert-success":"alert alert-danger"}style={this.state.showError? showErrorMessage:this.state.showSuccess? showSuccessMessage:successMessage}>{this.state.message}</p>
             </div>
             </div>
         );
@@ -101,5 +124,31 @@ const backBtnStyle = {
     marginLeft:window.innerWidth/20,
     marginTop: window.innerHeight/20,
     cursor: 'pointer'
+}
+
+
+var showErrorMessage = {
+    width:window.innerWidth/5,
+    color:'red',
+     marginLeft:window.innerWidth/18, 
+     visibility:'visible',
+     float: 'center'
+}
+
+var successMessage = {
+    width:window.innerWidth/5,
+    color:'green',
+     marginLeft:window.innerWidth/18, 
+     visibility:'hidden',
+     float: 'center'
+
+}
+
+var showSuccessMessage = {
+    width:window.innerWidth/5,
+    color:'green',
+     marginLeft:window.innerWidth/18, 
+     visibility:'visible',
+     float: 'center'
 }
 export default withRouter(EditPage);
